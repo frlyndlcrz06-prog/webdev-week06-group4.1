@@ -97,7 +97,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'), // Papertrail host.
                 'port' => env('PAPERTRAIL_PORT'), // Papertrail port.
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'), // TLS connection.
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'), // TLS connection.
             ],
             'processors' => [PsrLogMessageProcessor::class], // Log processors.
         ],

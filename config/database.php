@@ -149,7 +149,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'), // Cluster mode.
-            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-database-'), // Key prefix.
+            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')) . '-database-'), // Key prefix.
             'persistent' => env('REDIS_PERSISTENT', false), // Keep connections open.
         ],
 

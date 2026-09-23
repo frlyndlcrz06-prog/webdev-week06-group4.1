@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Inspiring; // Quote provider.
+use Illuminate\Support\Facades\Artisan; // Artisan facade.
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Artisan::command('inspire', function () { // Register command.
+    $this->comment(Inspiring::quote()); // Display quote.
+})->purpose('Display an inspiring quote'); // Set description.
