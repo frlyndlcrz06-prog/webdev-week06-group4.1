@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'log'), // Default mailer.
 
     /*
     |--------------------------------------------------------------------------
@@ -38,23 +38,23 @@ return [
     'mailers' => [
 
         'smtp' => [
-            'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+            'transport' => 'smtp', // Mail transport.
+            'scheme' => env('MAIL_SCHEME'), // Security scheme.
+            'url' => env('MAIL_URL'), // Mail server URL.
+            'host' => env('MAIL_HOST', '127.0.0.1'), // Mail host.
+            'port' => env('MAIL_PORT', 2525), // Mail port.
+            'username' => env('MAIL_USERNAME'), // Mail username.
+            'password' => env('MAIL_PASSWORD'), // Mail password.
+            'timeout' => null, // Connection timeout.
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)), // Local domain.
         ],
 
         'ses' => [
-            'transport' => 'ses',
+            'transport' => 'ses', // Mail transport.
         ],
 
         'postmark' => [
-            'transport' => 'postmark',
+            'transport' => 'postmark', // Mail transport.
             // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
             // 'client' => [
             //     'timeout' => 5,
@@ -62,39 +62,39 @@ return [
         ],
 
         'resend' => [
-            'transport' => 'resend',
+            'transport' => 'resend', // Mail transport.
         ],
 
         'sendmail' => [
-            'transport' => 'sendmail',
-            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+            'transport' => 'sendmail', // Mail transport.
+            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'), // Sendmail path.
         ],
 
         'log' => [
-            'transport' => 'log',
-            'channel' => env('MAIL_LOG_CHANNEL'),
+            'transport' => 'log', // Mail transport.
+            'channel' => env('MAIL_LOG_CHANNEL'), // Log channel.
         ],
 
         'array' => [
-            'transport' => 'array',
+            'transport' => 'array', // Mail transport.
         ],
 
         'failover' => [
-            'transport' => 'failover',
+            'transport' => 'failover', // Mail transport.
             'mailers' => [
-                'smtp',
-                'log',
+                'smtp', // Primary mailer.
+                'log', // Backup mailer.
             ],
-            'retry_after' => 60,
+            'retry_after' => 60, // Retry delay.
         ],
 
         'roundrobin' => [
-            'transport' => 'roundrobin',
+            'transport' => 'roundrobin', // Mail transport.
             'mailers' => [
-                'ses',
-                'postmark',
+                'ses', // First mailer.
+                'postmark', // Second mailer.
             ],
-            'retry_after' => 60,
+            'retry_after' => 60, // Retry delay.
         ],
 
     ],
@@ -111,8 +111,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'), // Sender address.
+        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')), // Sender name.
     ],
 
 ];

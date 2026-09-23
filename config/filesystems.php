@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'local'), // Default disk.
 
     /*
     |--------------------------------------------------------------------------
@@ -31,33 +31,33 @@ return [
     'disks' => [
 
         'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'serve' => true,
-            'throw' => false,
-            'report' => false,
+            'driver' => 'local', // Storage driver.
+            'root' => storage_path('app/private'), // Storage root.
+            'serve' => true, // Serve files.
+            'throw' => false, // Suppress exceptions.
+            'report' => false, // Suppress reports.
         ],
 
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
-            'visibility' => 'public',
-            'throw' => false,
-            'report' => false,
+            'driver' => 'local', // Storage driver.
+            'root' => storage_path('app/public'), // Storage root.
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage', // Public URL.
+            'visibility' => 'public', // File visibility.
+            'throw' => false, // Suppress exceptions.
+            'report' => false, // Suppress reports.
         ],
 
         's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'throw' => false,
-            'report' => false,
+            'driver' => 's3', // Storage driver.
+            'key' => env('AWS_ACCESS_KEY_ID'), // AWS access key.
+            'secret' => env('AWS_SECRET_ACCESS_KEY'), // AWS secret key.
+            'region' => env('AWS_DEFAULT_REGION'), // AWS region.
+            'bucket' => env('AWS_BUCKET'), // S3 bucket.
+            'url' => env('AWS_URL'), // Storage URL.
+            'endpoint' => env('AWS_ENDPOINT'), // Service endpoint.
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false), // Use path-style URLs.
+            'throw' => false, // Suppress exceptions.
+            'report' => false, // Suppress reports.
         ],
 
     ],
@@ -74,7 +74,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public'), // Public storage link.
     ],
 
 ];

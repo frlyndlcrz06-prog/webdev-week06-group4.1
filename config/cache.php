@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('CACHE_STORE', 'database'),
+    'default' => env('CACHE_STORE', 'database'), // Default cache store.
 
     /*
     |--------------------------------------------------------------------------
@@ -35,33 +35,33 @@ return [
     'stores' => [
 
         'array' => [
-            'driver' => 'array',
-            'serialize' => false,
+            'driver' => 'array', // Cache driver.
+            'serialize' => false, // Disable serialization.
         ],
 
         'database' => [
-            'driver' => 'database',
-            'connection' => env('DB_CACHE_CONNECTION'),
-            'table' => env('DB_CACHE_TABLE', 'cache'),
-            'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),
-            'lock_table' => env('DB_CACHE_LOCK_TABLE'),
+            'driver' => 'database', // Cache driver.
+            'connection' => env('DB_CACHE_CONNECTION'), // Database connection.
+            'table' => env('DB_CACHE_TABLE', 'cache'), // Cache table.
+            'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'), // Lock connection.
+            'lock_table' => env('DB_CACHE_LOCK_TABLE'), // Lock table.
         ],
 
         'file' => [
-            'driver' => 'file',
-            'path' => storage_path('framework/cache/data'),
-            'lock_path' => storage_path('framework/cache/data'),
+            'driver' => 'file', // Cache driver.
+            'path' => storage_path('framework/cache/data'), // Cache path.
+            'lock_path' => storage_path('framework/cache/data'), // Lock path.
         ],
 
         'storage' => [
-            'driver' => 'storage',
-            'disk' => env('CACHE_STORAGE_DISK'),
-            'path' => env('CACHE_STORAGE_PATH', 'framework/cache/data'),
+            'driver' => 'storage', // Cache driver.
+            'disk' => env('CACHE_STORAGE_DISK'), // Storage disk.
+            'path' => env('CACHE_STORAGE_PATH', 'framework/cache/data'), // Storage path.
         ],
 
         'memcached' => [
-            'driver' => 'memcached',
-            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
+            'driver' => 'memcached', // Cache driver.
+            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'), // Persistent connection ID.
             'sasl' => [
                 env('MEMCACHED_USERNAME'),
                 env('MEMCACHED_PASSWORD'),
@@ -71,37 +71,37 @@ return [
             ],
             'servers' => [
                 [
-                    'host' => env('MEMCACHED_HOST', '127.0.0.1'),
-                    'port' => env('MEMCACHED_PORT', 11211),
-                    'weight' => 100,
+                    'host' => env('MEMCACHED_HOST', '127.0.0.1'), // Server host.
+                    'port' => env('MEMCACHED_PORT', 11211), // Server port.
+                    'weight' => 100, // Server weight.
                 ],
             ],
         ],
 
         'redis' => [
-            'driver' => 'redis',
-            'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
-            'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
+            'driver' => 'redis', // Cache driver.
+            'connection' => env('REDIS_CACHE_CONNECTION', 'cache'), // Redis connection.
+            'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'), // Lock connection.
         ],
 
         'dynamodb' => [
-            'driver' => 'dynamodb',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-            'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
-            'endpoint' => env('DYNAMODB_ENDPOINT'),
+            'driver' => 'dynamodb', // Cache driver.
+            'key' => env('AWS_ACCESS_KEY_ID'), // AWS access key.
+            'secret' => env('AWS_SECRET_ACCESS_KEY'), // AWS secret key.
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'), // AWS region.
+            'table' => env('DYNAMODB_CACHE_TABLE', 'cache'), // Cache table.
+            'endpoint' => env('DYNAMODB_ENDPOINT'), // Service endpoint.
         ],
 
         'octane' => [
-            'driver' => 'octane',
+            'driver' => 'octane', // Cache driver.
         ],
 
         'failover' => [
-            'driver' => 'failover',
+            'driver' => 'failover', // Cache driver.
             'stores' => [
-                'database',
-                'array',
+                'database', // Primary store.
+                'array', // Backup store.
             ],
         ],
 
@@ -118,7 +118,7 @@ return [
     |
     */
 
-    'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
+    'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'), // Cache key prefix.
 
     /*
     |--------------------------------------------------------------------------
@@ -131,6 +131,6 @@ return [
     |
     */
 
-    'serializable_classes' => false,
+    'serializable_classes' => false, // Disable class unserialization.
 
 ];

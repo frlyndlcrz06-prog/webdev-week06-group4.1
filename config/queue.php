@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_CONNECTION', 'database'),
+    'default' => env('QUEUE_CONNECTION', 'database'), // Default connection.
 
     /*
     |--------------------------------------------------------------------------
@@ -32,60 +32,60 @@ return [
     'connections' => [
 
         'sync' => [
-            'driver' => 'sync',
+            'driver' => 'sync', // Queue driver.
         ],
 
         'database' => [
-            'driver' => 'database',
-            'connection' => env('DB_QUEUE_CONNECTION'),
-            'table' => env('DB_QUEUE_TABLE', 'jobs'),
-            'queue' => env('DB_QUEUE', 'default'),
-            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
-            'after_commit' => false,
+            'driver' => 'database', // Queue driver.
+            'connection' => env('DB_QUEUE_CONNECTION'), // Database connection.
+            'table' => env('DB_QUEUE_TABLE', 'jobs'), // Jobs table.
+            'queue' => env('DB_QUEUE', 'default'), // Queue name.
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90), // Retry delay.
+            'after_commit' => false, // Wait for commits.
         ],
 
         'beanstalkd' => [
-            'driver' => 'beanstalkd',
-            'host' => env('BEANSTALKD_QUEUE_HOST', 'localhost'),
-            'queue' => env('BEANSTALKD_QUEUE', 'default'),
-            'retry_after' => (int) env('BEANSTALKD_QUEUE_RETRY_AFTER', 90),
-            'block_for' => 0,
-            'after_commit' => false,
+            'driver' => 'beanstalkd', // Queue driver.
+            'host' => env('BEANSTALKD_QUEUE_HOST', 'localhost'), // Server host.
+            'queue' => env('BEANSTALKD_QUEUE', 'default'), // Queue name.
+            'retry_after' => (int) env('BEANSTALKD_QUEUE_RETRY_AFTER', 90), // Retry delay.
+            'block_for' => 0, // Blocking time.
+            'after_commit' => false, // Wait for commits.
         ],
 
         'sqs' => [
-            'driver' => 'sqs',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
-            'queue' => env('SQS_QUEUE', 'default'),
-            'suffix' => env('SQS_SUFFIX'),
-            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-            'after_commit' => false,
+            'driver' => 'sqs', // Queue driver.
+            'key' => env('AWS_ACCESS_KEY_ID'), // AWS access key.
+            'secret' => env('AWS_SECRET_ACCESS_KEY'), // AWS secret key.
+            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'), // Queue URL prefix.
+            'queue' => env('SQS_QUEUE', 'default'), // Queue name.
+            'suffix' => env('SQS_SUFFIX'), // Queue URL suffix.
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'), // AWS region.
+            'after_commit' => false, // Wait for commits.
         ],
 
         'redis' => [
-            'driver' => 'redis',
-            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'),
-            'queue' => env('REDIS_QUEUE', 'default'),
-            'retry_after' => (int) env('REDIS_QUEUE_RETRY_AFTER', 90),
-            'block_for' => null,
-            'after_commit' => false,
+            'driver' => 'redis', // Queue driver.
+            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'), // Redis connection.
+            'queue' => env('REDIS_QUEUE', 'default'), // Queue name.
+            'retry_after' => (int) env('REDIS_QUEUE_RETRY_AFTER', 90), // Retry delay.
+            'block_for' => null, // Blocking time.
+            'after_commit' => false, // Wait for commits.
         ],
 
         'deferred' => [
-            'driver' => 'deferred',
+            'driver' => 'deferred', // Queue driver.
         ],
 
         'background' => [
-            'driver' => 'background',
+            'driver' => 'background', // Queue driver.
         ],
 
         'failover' => [
-            'driver' => 'failover',
+            'driver' => 'failover', // Queue driver.
             'connections' => [
-                'database',
-                'deferred',
+                'database', // Primary connection.
+                'deferred', // Backup connection.
             ],
         ],
 
@@ -103,8 +103,8 @@ return [
     */
 
     'batching' => [
-        'database' => env('DB_CONNECTION', 'sqlite'),
-        'table' => 'job_batches',
+        'database' => env('DB_CONNECTION', 'sqlite'), // Batching database.
+        'table' => 'job_batches', // Batching table.
     ],
 
     /*
@@ -121,9 +121,9 @@ return [
     */
 
     'failed' => [
-        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
-        'database' => env('DB_CONNECTION', 'sqlite'),
-        'table' => 'failed_jobs',
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'), // Failed job driver.
+        'database' => env('DB_CONNECTION', 'sqlite'), // Failed job database.
+        'table' => 'failed_jobs', // Failed jobs table.
     ],
 
 ];

@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'stack'), // Default channel.
 
     /*
     |--------------------------------------------------------------------------
@@ -32,8 +32,8 @@ return [
     */
 
     'deprecations' => [
-        'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
-        'trace' => env('LOG_DEPRECATIONS_TRACE', false),
+        'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'), // Deprecation channel.
+        'trace' => env('LOG_DEPRECATIONS_TRACE', false), // Include traces.
     ],
 
     /*
@@ -53,86 +53,86 @@ return [
     'channels' => [
 
         'stack' => [
-            'driver' => 'stack',
-            'channels' => explode(',', (string) env('LOG_STACK', 'single')),
-            'ignore_exceptions' => false,
+            'driver' => 'stack', // Log driver.
+            'channels' => explode(',', (string) env('LOG_STACK', 'single')), // Stacked channels.
+            'ignore_exceptions' => false, // Do not ignore errors.
         ],
 
         'single' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'replace_placeholders' => true,
+            'driver' => 'single', // Log driver.
+            'path' => storage_path('logs/laravel.log'), // Log file path.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'daily' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'max_files' => env('LOG_DAILY_DAYS', 14),
-            'replace_placeholders' => true,
+            'driver' => 'daily', // Log driver.
+            'path' => storage_path('logs/laravel.log'), // Log file path.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'max_files' => env('LOG_DAILY_DAYS', 14), // Files to keep.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'monthly' => [
-            'driver' => 'monthly',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'max_files' => 3,
-            'replace_placeholders' => true,
+            'driver' => 'monthly', // Log driver.
+            'path' => storage_path('logs/laravel.log'), // Log file path.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'max_files' => 3, // Files to keep.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'slack' => [
-            'driver' => 'slack',
-            'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => env('LOG_SLACK_USERNAME', env('APP_NAME', 'Laravel')),
-            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
-            'level' => env('LOG_LEVEL', 'critical'),
-            'replace_placeholders' => true,
+            'driver' => 'slack', // Log driver.
+            'url' => env('LOG_SLACK_WEBHOOK_URL'), // Webhook URL.
+            'username' => env('LOG_SLACK_USERNAME', env('APP_NAME', 'Laravel')), // Sender name.
+            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'), // Message emoji.
+            'level' => env('LOG_LEVEL', 'critical'), // Minimum level.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'papertrail' => [
-            'driver' => 'monolog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
+            'driver' => 'monolog', // Log driver.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class), // Log handler.
             'handler_with' => [
-                'host' => env('PAPERTRAIL_URL'),
-                'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'host' => env('PAPERTRAIL_URL'), // Papertrail host.
+                'port' => env('PAPERTRAIL_PORT'), // Papertrail port.
+                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'), // TLS connection.
             ],
-            'processors' => [PsrLogMessageProcessor::class],
+            'processors' => [PsrLogMessageProcessor::class], // Log processors.
         ],
 
         'stderr' => [
-            'driver' => 'monolog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'handler' => StreamHandler::class,
+            'driver' => 'monolog', // Log driver.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'handler' => StreamHandler::class, // Log handler.
             'handler_with' => [
-                'stream' => 'php://stderr',
+                'stream' => 'php://stderr', // Error stream.
             ],
-            'formatter' => env('LOG_STDERR_FORMATTER'),
-            'processors' => [PsrLogMessageProcessor::class],
+            'formatter' => env('LOG_STDERR_FORMATTER'), // Log formatter.
+            'processors' => [PsrLogMessageProcessor::class], // Log processors.
         ],
 
         'syslog' => [
-            'driver' => 'syslog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
-            'replace_placeholders' => true,
+            'driver' => 'syslog', // Log driver.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER), // Syslog facility.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'errorlog' => [
-            'driver' => 'errorlog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'replace_placeholders' => true,
+            'driver' => 'errorlog', // Log driver.
+            'level' => env('LOG_LEVEL', 'debug'), // Minimum level.
+            'replace_placeholders' => true, // Replace placeholders.
         ],
 
         'null' => [
-            'driver' => 'monolog',
-            'handler' => NullHandler::class,
+            'driver' => 'monolog', // Log driver.
+            'handler' => NullHandler::class, // Discard logs.
         ],
 
         'emergency' => [
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path('logs/laravel.log'), // Emergency log path.
         ],
 
     ],
